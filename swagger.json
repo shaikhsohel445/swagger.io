@@ -1,0 +1,346 @@
+{
+    "swagger": "2.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "DEmo APIs",
+        "description": "<h2>test api and html code in descriptipn</h2>"
+    },
+    "host": "localhost:portname",
+    "basePath": "/api/",
+    "tags": [],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "description": "Enter your access token in the format 'Bearer &lt;token&gt;'"
+        }
+    },
+    "security": [
+        {
+            "Bearer": []
+        }
+    ],
+    "paths": {
+        "/upload": {
+            "post": {
+              "tags": [
+                "Common Document upload"
+              ],
+              "description": "",
+              "parameters": [
+                {
+                  "name": "files",
+                  "type": "file",
+                  "consumes": [
+                    "multipart/form-data"
+                  ],
+                  "description": "file to upload",
+                  "in": "formData"
+                }
+              ],
+              "responses": {}
+            }
+          },
+        "/timesheets/store": {
+            "post": {
+                "tags": [
+                    "timesheet"
+                ],
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "obj",
+                        "in": "body",
+                        "schema": {
+                            "properties": {
+                                "request_id": {
+                                    "example": "{{$guid}}"
+                                },
+                                "placement_id": {
+                                    "example": "placement_id"
+                                },
+                                "start_date": {
+                                    "example": "Date"
+                                },
+                                "end_date": {
+                                    "example": "Date"
+                                },
+                                "document_id": {
+                                    "example": "Id_from_upload_document"
+                                },
+                                "comments": {
+                                    "example": "comments"
+                                },
+                                "total_billable_hours": {
+                                    "example": "integer"
+                                },
+                                "total_hours": {
+                                    "example": "integer"
+                                },
+                                "total_approved_hours": {
+                                    "example": "integer"
+                                },
+                                "weekly": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "billable_hours": {
+                                                "type": "integer",
+                                                "example": "integer"
+                                            },
+                                            "approved_hours": {
+                                                "type": "integer",
+                                                "example": "integer"
+                                            },
+                                            "total_hours": {
+                                                "type": "string",
+                                                "example": "Date"
+                                            },
+                                            "timesheet": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "date": {
+                                                            "type": "date",
+                                                            "example": "Date"
+                                                        },
+                                                        "billable_hours": {
+                                                            "type": "integer",
+                                                            "example": "integer"
+                                                        },
+                                                        "approved_hours": {
+                                                            "type": "integer",
+                                                            "example": "integer"
+                                                        },
+                                                        "total_hours": {
+                                                            "type": "string",
+                                                            "example": "Date"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/timesheets/update": {
+            "put": {
+                "tags": [
+                    "timesheet"
+                ],
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "obj",
+                        "in": "body",
+                        "schema": {
+                            "properties": {
+                                "request_id": {
+                                    "example": "{{$guid}}"
+                                },
+                                "id": {
+                                    "example": "uuid",
+                                    "description": "Id of the particular record"
+                                },
+                                "placement_id": {
+                                    "example": "placement_id"
+                                },
+                                "start_date": {
+                                    "example": "Date"
+                                },
+                                "end_date": {
+                                    "example": "Date"
+                                },
+                                "document_id": {
+                                    "example": "Id_from_upload_document"
+                                },
+                                "comments": {
+                                    "example": "comments"
+                                },
+                                "total_billable_hours": {
+                                    "example": "integer"
+                                },
+                                "total_hours": {
+                                    "example": "integer"
+                                },
+                                "total_approved_hours": {
+                                    "example": "integer"
+                                },
+                                "weekly": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "example": "integer"
+                                            },
+                                            "billable_hours": {
+                                                "type": "integer",
+                                                "example": "integer"
+                                            },
+                                            "approved_hours": {
+                                                "type": "integer",
+                                                "example": "integer"
+                                            },
+                                            "total_hours": {
+                                                "type": "string",
+                                                "example": "Date"
+                                            },
+                                            "timesheet": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string",
+                                                            "example": "integer"
+                                                        },
+                                                        "date": {
+                                                            "type": "date",
+                                                            "example": "Date"
+                                                        },
+                                                        "billable_hours": {
+                                                            "type": "integer",
+                                                            "example": "integer"
+                                                        },
+                                                        "approved_hours": {
+                                                            "type": "integer",
+                                                            "example": "integer"
+                                                        },
+                                                        "total_hours": {
+                                                            "type": "string",
+                                                            "example": "Date"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/timesheets/listing": {
+            "get": {
+                "tags": [
+                    "timesheet"
+                ],
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "request_id",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Random Number",
+                            "example": "{{$guid}}"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/timesheets/index": {
+            "get": {
+                "tags": [
+                    "timesheet"
+                ],
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "request_id",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Random Number",
+                            "example": "{{$guid}}"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "timesheet_id",
+                        "schema": {
+                            "type": "UUID",
+                            "description": "timesheet id",
+                            "example": "timesheet_id"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/timesheets/status": {
+            "post": {
+                "tags": [
+                    "timesheet"
+                ],
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "obj",
+                        "in": "body",
+                        "schema": {
+                            "properties": {
+                                "request_id": {
+                                    "example": "{{$guid}}"
+                                },
+                                "timesheet_id": {
+                                    "example": "timesheet_id"
+                                },
+                                "placement_id": {
+                                    "example": "placement_id"
+                                },
+                                "approved_status": {
+                                    "example": "Boolean",
+                                    "description": "1 for active and 0 for inactive"
+                                },
+                                "comments": {
+                                    "example": "any"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/timesheet/dashboard": {
+            "get": {
+                "tags": [
+                    "timesheet-dashboard"
+                ],
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "request_id",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Random Number",
+                            "example": "{{$guid}}"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        }
+    }
+}
